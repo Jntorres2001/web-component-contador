@@ -2,17 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ejemplo: Contador de Clicks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integración de Web Components</title>
+  <script src="contador-clicks.js" defer></script>
+  <script src="formulario-accion.js" defer></script>
+  <style>
+    /* Estilo general para el documento */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .contenedor {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
+  <h1>Web Components: Contador y Formulario</h1>
 
-  <h1>Prueba del componente personalizado</h1>
+  <!-- Componente de contador -->
+  <div class="contenedor">
+    <contador-clicks id="contador" tema="lightblue">
+      <h2 slot="titulo">Contador</h2>
+      <p slot="mensaje">Pulsa el botón para aumentar el contador</p>
+    </contador-clicks>
+    
+  </div>
 
-  <contador-clicks tema="lightblue">
-    <h2 slot="titulo">Haz clic en el botón</h2>
-    <p slot="mensaje">¡Cada clic suma uno al contador!</p>
-  </contador-clicks>
-
-  <script src="contador-clicks.js"></script>
+  <div class="contenedor">
+    <formulario-accion>
+      <button slot="boton-enviar" type="submit">Actualizar y Reiniciar</button>
+    </formulario-accion>
+  </div>
+  
 </body>
 </html>
