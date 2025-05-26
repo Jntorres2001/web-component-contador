@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Integración de Web Components</title>
+
+  <!-- Scripts -->
+  <script src="contador-clicks.js" defer></script>
+  <script src="formulario-accion.js" defer></script>
+  <script type="module" src="espe-modal.js"></script>
+
+  <!-- Estilos -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Web Components: Contador, Formulario y Modal</h1>
+
+  <!-- Contador -->
+  <div class="contenedor">
+    <contador-clicks id="contador" tema="lightblue">
+      <h2 slot="titulo">Contador</h2>
+      <p slot="mensaje">Pulsa el botón para aumentar el contador</p>
+    </contador-clicks>
+  </div>
+
+  <!-- Formulario -->
+  <div class="contenedor">
+    <formulario-accion>
+      <button slot="boton-enviar" type="submit">Actualizar y Reiniciar</button>
+    </formulario-accion>
+  </div>
+
+  
+  <espe-modal>
+    <h2>Actualización realizada</h2>
+    <p>El contador ha sido reiniciado y el color actualizado.</p>
+  </espe-modal>
+
+  
+  <script>
+    document.querySelector('espe-modal').addEventListener('modal-cerrado', (e) => {
+      console.log(e.detail.mensaje);
+    });
+  </script>
+</body>
+</html>
